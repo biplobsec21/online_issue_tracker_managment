@@ -23,7 +23,18 @@ const NewIssuePage = () => {
   });
   const [error,setError]=useState('');
   const [isSubmitting,setSubmitting]=useState(false);
+  const onSubmit = handleSubmit(async (data)=>{
+      try {
+        setSubmitting(true);
+        await axios.post('/api/issues',data);
+        route.push('/issues');
+        
+      } catch (error) {
+        setSubmitting(false);
+        setError('An unexpected error occured.');
+      }
 
+    });
   return (
     <div className='max-w-xl'>
       {error && <Callout.Root color='red' className='mb-5'>
@@ -33,33 +44,22 @@ const NewIssuePage = () => {
         </Callout.Root>}
        <form 
         className='space-y-4'
-        onSubmit={handleSubmit(async (data)=>{
-          try {
-            setSubmitting(true);
-            await axios.post('/api/issues',data);
-            route.push('/issues');
-            
-          } catch (error) {
-            setSubmitting(false);
-            setError('An unexpected error occured.');
-          }
-
-        })} >
-          <TextField.Root>
-              <TextField.Input placeholder='Title' {...register('title')} />
-          </TextField.Root>
-          <ErrorMessage>
-            { errors.title?.message }
-          </ErrorMessage>
-          <Controller
-            name='description'
-            control={control}
-            render={({field})=><SimpleMDE placeholder='Enter description' {...field}/>}
-          />
-          <ErrorMessage>
-           { errors.description?.message }
-          </ErrorMessage>
-          <Button disabled={isSubmitting}>Create new issue {isSubmitting && <Spinner /> }</Button>
+        onSubmit={onSubmit} >
+            <TextField.Root>
+                <TextField.Input placeholder='Title' {...register('title')} />
+            </TextField.Root>
+            <ErrorMessage>
+              { errors.title?.message }
+            </ErrorMessage>
+            <Controller
+              name='description'
+              control={control}
+              render={({field})=><SimpleMDE placeholder='Enter description' {...field}/>}
+            />
+            <ErrorMessage>
+            { errors.description?.message }
+            </ErrorMessage>
+            <Button disabled={isSubmitting}>Create new issue {isSubmitting && <Spinner /> }</Button>
       </form>
     </div>
    
