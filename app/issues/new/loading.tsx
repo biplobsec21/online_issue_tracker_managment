@@ -1,9 +1,9 @@
 import React from 'react'
 
-const NewIssuePageloading = () => {
+const LoadingNewIssuePage = () => {
   return (
     <div>loading...</div>
   )
 }
 
-export default NewIssuePageloading
+export default LoadingNewIssuePage
