@@ -25,7 +25,7 @@ const IssueDetailPage = async ({params} : Props) => {
             <Text>{issue.created_at.toDateString()}</Text>
         </Flex>
         
-        <Card class="prose">
+        <Card className="prose">
             <ReactMarkdown>{issue.description}</ReactMarkdown>
         </Card>
         
