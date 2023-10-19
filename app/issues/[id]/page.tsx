@@ -1,5 +1,5 @@
 import prisma from '@/prisma/client'
-import { Card, Flex, Heading, Text } from '@radix-ui/themes';
+import { Box, Card, Flex, Heading, Text } from '@radix-ui/themes';
 import { notFound } from 'next/navigation';
 import React from 'react'
 import IssueStatusBadge from '../../components/IssueStatusBadge';
@@ -18,7 +18,7 @@ const IssueDetailPage = async ({params} : Props) => {
         notFound();
 
   return (
-    <div>
+    <Box>
         <Heading>{issue.title}</Heading>
         <Flex my="2" className='space-x-3'>
             <IssueStatusBadge status={issue.status}/>
@@ -29,7 +29,7 @@ const IssueDetailPage = async ({params} : Props) => {
             <ReactMarkdown>{issue.description}</ReactMarkdown>
         </Card>
         
-    </div>
+    </Box>
   )
 }
 
