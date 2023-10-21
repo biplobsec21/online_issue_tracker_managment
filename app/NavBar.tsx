@@ -6,27 +6,27 @@ import classnames from 'classnames';
 import { usePathname } from 'next/navigation';
 
 const NavBar = () => {
-  const currentPathName=usePathname();
-  const links= [
-    {label: 'Dashboard', href:'/'},
-    {label: 'Issues', href:'/issues'},
+  const currentPathName = usePathname();
+  const links = [
+    { label: 'Dashboard', href: '/' },
+    { label: 'Issues', href: '/issues/list' },
   ]
   return (
     <nav className='flex space-x-6 h-14 px-5 border-b mb-5 items-center'>
       <Link href="/"> <AiFillBug /> </Link>
       <ul className='flex space-x-6'>
-        {links.map(link => 
-          <Link key={link.href} 
-                className={classnames({
-                    'text-zinc-500' : link.href !== currentPathName,
-                    'text-zinc-900' : link.href === currentPathName,
-                    'hover:text-zinc-800 transition-colors' : true,
-                    })
-                  } 
-                href={link.href} >
+        {links.map(link =>
+          <Link key={link.href}
+            className={classnames({
+              'text-zinc-500': link.href !== currentPathName,
+              'text-zinc-900': link.href === currentPathName,
+              'hover:text-zinc-800 transition-colors': true,
+            })
+            }
+            href={link.href} >
 
-                {link.label}
-                
+            {link.label}
+
           </Link>
         )}
       </ul>

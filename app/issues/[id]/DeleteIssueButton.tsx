@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
-    const router = useRouter();
+    const route = useRouter();
     const [error, setError] = useState(false);
     const [isDeleting, setDeleting] = useState(false);
     const DeleteIssue = async () => {
@@ -15,7 +15,7 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
             setError(false);
             setDeleting(true);
             await axios.delete('/api/issues/' + issueId);
-            router.push("/issues");
+            route.push("/issues/list");
             // router.refresh();
         } catch (error) {
             setError(true);
