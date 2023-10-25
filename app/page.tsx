@@ -1,6 +1,7 @@
 import prisma from "@/prisma/client";
 import IssueSummary from "./IssueSummary";
 import LatestIssues from "./LatestIssues";
+import IssueChart from "./IssueChart";
 
 export default async function Home() {
 
@@ -15,6 +16,6 @@ export default async function Home() {
   });
   return (
     // <LatestIssues />
-    <IssueSummary open={open} closed={closed} inprogress={inprogress} />
+    <IssueChart open={open} closed={closed} inprogress={inprogress} />
   )
 }
