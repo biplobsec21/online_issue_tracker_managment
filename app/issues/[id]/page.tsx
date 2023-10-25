@@ -18,6 +18,7 @@ const issueDetials = cache((issueId: number) => {
     where: { id: (issueId) }
   });
 })
+
 const IssueDetailPage = async ({ params }: Props) => {
   const session = await getServerSession(authOptions)
   const issue = await issueDetials(parseInt(params.id));
@@ -40,6 +41,7 @@ const IssueDetailPage = async ({ params }: Props) => {
 
   )
 }
+
 
 export default IssueDetailPage
 
