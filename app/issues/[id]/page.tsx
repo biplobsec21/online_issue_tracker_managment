@@ -18,10 +18,6 @@ const issueDetials = cache((issueId: number) => {
     where: { id: (issueId) }
   });
 })
-<<<<<<< HEAD
-
-=======
->>>>>>> b9a858ba311dc20ddc9dc6792d5095efa2c73343
 const IssueDetailPage = async ({ params }: Props) => {
   const session = await getServerSession(authOptions)
   const issue = await issueDetials(parseInt(params.id));
