@@ -11,7 +11,7 @@ export interface IssueQuery {
     page: string
 }
 interface Props {
-    searchParams: IssueQuery;
+    searchParams: IssueQuery,
     issues: Issue[]
 }
 const IssueTable = ({ searchParams, issues }: Props) => {
